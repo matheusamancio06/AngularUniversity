@@ -41,6 +41,11 @@ O projeto aplica os principais conceitos de desenvolvimento Angular:
 
 *Universidades marcadas como favoritas, persistidas em LocalStorage*
 
+### Tela Sobre
+![Sobre](docs/screenshot-about.png)
+
+*Informações sobre o projeto, tecnologias utilizadas e desenvolvedor*
+
 ---
 
 ## 🚀 Tecnologias Utilizadas
