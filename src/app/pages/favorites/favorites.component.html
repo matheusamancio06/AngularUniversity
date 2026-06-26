@@ -1,0 +1,44 @@
+<div class="container py-4">
+  <h2 class="fw-bold mb-4">
+    <i class="bi bi-star-fill text-warning me-2"></i>Universidades Favoritas
+  </h2>
+
+  <!-- Empty state -->
+  <div *ngIf="favorites.length === 0" class="text-center py-5">
+    <i class="bi bi-star display-1 text-muted"></i>
+    <h5 class="mt-3 text-muted">Nenhuma universidade favorita ainda</h5>
+    <p class="text-muted">Pesquise universidades e clique na estrela para favoritá-las.</p>
+    <a routerLink="/home" class="btn btn-primary mt-2">
+      <i class="bi bi-search me-2"></i>Ir para pesquisa
+    </a>
+  </div>
+
+  <!-- Favorites list -->
+  <div *ngIf="favorites.length > 0">
+    <div class="card shadow-sm border-0 mb-4">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+          <span class="text-muted">
+            <i class="bi bi-info-circle me-1"></i>
+            {{ favorites.length }} universidade(s) favoritada(s)
+          </span>
+          <div class="col-12 col-md-5">
+            <input type="text" class="form-control form-control-sm"
+              placeholder="Filtrar favoritos por nome ou país..."
+              [(ngModel)]="filterText">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="filtered.length === 0" class="text-center py-3 text-muted">
+      <i class="bi bi-search me-1"></i>Nenhum favorito encontrado para "<strong>{{ filterText }}</strong>"
+    </div>
+
+    <div class="row g-3" *ngIf="filtered.length > 0">
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3" *ngFor="let u of filtered">
+        <app-university-card [university]="u"></app-university-card>
+      </div>
+    </div>
+  </div>
+</div>

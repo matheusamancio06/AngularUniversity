@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg shadow-sm sticky-top" [class.navbar-dark]="theme.isDark()" [class.navbar-light]="!theme.isDark()" [class.bg-dark]="theme.isDark()" [class.bg-white]="!theme.isDark()">
+  <div class="container">
+    <a class="navbar-brand fw-bold d-flex align-items-center gap-2" routerLink="/home">
+      <i class="bi bi-mortarboard-fill text-primary fs-4"></i>
+      <span>AngularUniversity</span>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/home" routerLinkActive="active">
+            <i class="bi bi-search me-1"></i>Pesquisar
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/results" routerLinkActive="active">
+            <i class="bi bi-list-ul me-1"></i>Resultados
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/favorites" routerLinkActive="active">
+            <i class="bi bi-star-fill me-1"></i>Favoritos
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/about" routerLinkActive="active">
+            <i class="bi bi-info-circle me-1"></i>Sobre
+          </a>
+        </li>
+      </ul>
+
+      <button class="btn btn-outline-secondary btn-sm" (click)="theme.toggle()" title="Alternar tema">
+        <i class="bi" [class.bi-moon-fill]="!theme.isDark()" [class.bi-sun-fill]="theme.isDark()"></i>
+        {{ theme.isDark() ? 'Modo Claro' : 'Modo Escuro' }}
+      </button>
+    </div>
+  </div>
+</nav>

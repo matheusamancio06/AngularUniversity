@@ -1,0 +1,124 @@
+<div class="container py-4">
+
+  <!-- Header -->
+  <div class="d-flex align-items-center gap-3 mb-4 flex-wrap">
+    <h2 class="fw-bold mb-0">
+      <i class="bi bi-list-ul text-primary me-2"></i>
+      Universidades{{ country ? ' em ' + country : '' }}
+    </h2>
+  </div>
+
+  <!-- Loading -->
+  <div *ngIf="loading" class="text-center py-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Carregando...</span>
+    </div>
+    <p class="mt-3 text-muted">Buscando universidades em {{ country }}...</p>
+  </div>
+
+  <!-- Error -->
+  <div *ngIf="error && !loading" class="alert alert-danger d-flex align-items-center gap-2">
+    <i class="bi bi-exclamation-triangle-fill"></i>
+    {{ error }}
+  </div>
+
+  <!-- Empty -->
+  <div *ngIf="!loading && !error && allUniversities.length === 0 && country" class="text-center py-5">
+    <i class="bi bi-search display-1 text-muted"></i>
+    <p class="mt-3 text-muted">Nenhuma universidade encontrada para <strong>{{ country }}</strong>.</p>
+  </div>
+
+  <!-- No search yet -->
+  <div *ngIf="!loading && !error && !country" class="text-center py-5">
+    <i class="bi bi-mortarboard display-1 text-muted"></i>
+    <p class="mt-3 text-muted">Faça uma pesquisa na tela inicial para ver os resultados aqui.</p>
+  </div>
+
+  <!-- Results -->
+  <div *ngIf="!loading && allUniversities.length > 0">
+
+    <!-- Dashboard -->
+    <app-dashboard [universities]="allUniversities"></app-dashboard>
+
+    <!-- Filters & Sort -->
+    <div class="card shadow-sm border-0 mb-4">
+      <div class="card-body">
+        <div class="row g-3 align-items-end">
+          <div class="col-12 col-md-6">
+            <label class="form-label fw-semibold">
+              <i class="bi bi-funnel me-1 text-primary"></i>Filtrar por nome
+            </label>
+            <input type="text" class="form-control" placeholder="Ex: Federal, State, Technology..."
+              [(ngModel)]="filterText" (ngModelChange)="onFilterChange()">
+          </div>
+          <div class="col-12 col-md-4">
+            <label class="form-label fw-semibold">
+              <i class="bi bi-sort-alpha-down me-1 text-primary"></i>Ordenar por
+            </label>
+            <select class="form-select" [(ngModel)]="sortOrder" (ngModelChange)="onSortChange()">
+              <option value="az">Nome A → Z</option>
+              <option value="za">Nome Z → A</option>
+            </select>
+          </div>
+          <div class="col-12 col-md-2">
+            <label class="form-label fw-semibold">Por página</label>
+            <select class="form-select" [(ngModel)]="pageSize" (ngModelChange)="currentPage = 1">
+              <option [value]="6">6</option>
+              <option [value]="12">12</option>
+              <option [value]="24">24</option>
+              <option [value]="50">50</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="mt-2 small text-muted" *ngIf="filterText">
+          <i class="bi bi-info-circle me-1"></i>
+          Exibindo {{ filtered.length }} de {{ allUniversities.length }} universidades
+        </div>
+      </div>
+    </div>
+
+    <!-- Grid Cards -->
+    <div class="row g-3 mb-4" *ngIf="paginated.length > 0">
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3" *ngFor="let u of paginated">
+        <app-university-card [university]="u"></app-university-card>
+      </div>
+    </div>
+
+    <!-- No filter results -->
+    <div *ngIf="paginated.length === 0 && filterText" class="text-center py-4">
+      <i class="bi bi-emoji-frown display-4 text-muted"></i>
+      <p class="mt-2 text-muted">Nenhum resultado para "<strong>{{ filterText }}</strong>"</p>
+    </div>
+
+    <!-- Pagination -->
+    <nav *ngIf="totalPages > 1" class="d-flex justify-content-center mb-5">
+      <ul class="pagination">
+        <li class="page-item" [class.disabled]="currentPage === 1">
+          <button class="page-link" (click)="goToPage(currentPage - 1)">
+            <i class="bi bi-chevron-left"></i>
+          </button>
+        </li>
+        <li *ngFor="let p of pages" class="page-item" [class.active]="p === currentPage">
+          <button class="page-link" (click)="goToPage(p)">{{ p }}</button>
+        </li>
+        <li class="page-item" [class.disabled]="currentPage === totalPages">
+          <button class="page-link" (click)="goToPage(currentPage + 1)">
+            <i class="bi bi-chevron-right"></i>
+          </button>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Chart -->
+    <div class="card shadow-sm border-0 mb-4" *ngIf="chartData.length > 0">
+      <div class="card-body">
+        <h6 class="card-title mb-3">
+          <i class="bi bi-bar-chart-fill me-2 text-primary"></i>Universidades por País Pesquisado
+        </h6>
+        <canvas #chartCanvas height="100"></canvas>
+      </div>
+    </div>
+
+  </div>
+</div>

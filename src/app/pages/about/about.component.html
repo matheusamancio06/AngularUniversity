@@ -1,0 +1,111 @@
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-10">
+
+      <!-- Project Header -->
+      <div class="text-center mb-5">
+        <i class="bi bi-mortarboard-fill display-2 text-primary"></i>
+        <h1 class="fw-bold mt-3">Angular University</h1>
+        <p class="lead text-muted">Catálogo mundial de Universidades com Angular</p>
+        <span class="badge bg-primary fs-6 px-3 py-2">v1.0.0</span>
+      </div>
+
+      <!-- About the Project -->
+      <div class="card shadow-sm border-0 mb-4">
+        <div class="card-body p-4">
+          <h4 class="fw-bold mb-3">
+            <i class="bi bi-info-circle-fill text-primary me-2"></i>Sobre o Projeto
+          </h4>
+          <p class="text-muted">
+            O <strong>AngularUniversity</strong> é uma aplicação web responsiva desenvolvida com
+            <strong>Angular 19</strong> e <strong>TypeScript</strong>, que permite consultar
+            universidades de qualquer país do mundo através da
+            <a href="http://universities.hipolabs.com" target="_blank" rel="noopener">Universities API (Hipolabs)</a>.
+          </p>
+          <p class="text-muted mb-0">
+            O projeto foi desenvolvido como atividade final complementar da disciplina de
+            Desenvolvimento de Aplicativos, aplicando os conceitos de componentes, serviços,
+            interfaces, roteamento, HttpClient, data binding, diretivas e armazenamento local.
+          </p>
+        </div>
+      </div>
+
+      <!-- Features -->
+      <div class="card shadow-sm border-0 mb-4">
+        <div class="card-body p-4">
+          <h4 class="fw-bold mb-3">
+            <i class="bi bi-check2-circle text-success me-2"></i>Funcionalidades
+          </h4>
+          <ul class="list-unstyled mb-0">
+            <li *ngFor="let f of features" class="d-flex align-items-start gap-2 mb-2">
+              <i class="bi bi-check-circle-fill text-success mt-1 flex-shrink-0"></i>
+              <span class="text-muted">{{ f }}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Technologies -->
+      <div class="card shadow-sm border-0 mb-4">
+        <div class="card-body p-4">
+          <h4 class="fw-bold mb-3">
+            <i class="bi bi-cpu-fill text-info me-2"></i>Tecnologias Utilizadas
+          </h4>
+          <div class="row g-3">
+            <div class="col-12 col-sm-6 col-md-4" *ngFor="let t of technologies">
+              <div class="d-flex align-items-center gap-3 p-3 rounded-3 border">
+                <i class="bi {{ t.icon }} {{ t.color }} fs-3"></i>
+                <div>
+                  <div class="fw-semibold">{{ t.name }}</div>
+                  <small class="text-muted">{{ t.desc }}</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- API Info -->
+      <div class="card shadow-sm border-0 mb-4">
+        <div class="card-body p-4">
+          <h4 class="fw-bold mb-3">
+            <i class="bi bi-cloud-fill text-primary me-2"></i>API Utilizada
+          </h4>
+          <div class="d-flex align-items-center gap-3 p-3 rounded-3 bg-body-secondary">
+            <i class="bi bi-link-45deg fs-2 text-primary"></i>
+            <div>
+              <div class="fw-semibold">Universities API — Hipolabs</div>
+              <code class="small">http://universities.hipolabs.com/search?country=Brazil</code>
+              <div class="mt-1">
+                <span class="badge bg-success me-1">Gratuita</span>
+                <span class="badge bg-secondary me-1">Sem autenticação</span>
+                <span class="badge bg-info text-dark">Retorna JSON</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Developer -->
+      <div class="card shadow-sm border-0">
+        <div class="card-body p-4">
+          <h4 class="fw-bold mb-3">
+            <i class="bi bi-person-circle text-warning me-2"></i>Desenvolvedor
+          </h4>
+          <div class="d-flex align-items-center gap-3">
+            <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center text-white fw-bold"
+              style="width:64px;height:64px;font-size:1.5rem">M</div>
+            <div>
+              <h5 class="fw-bold mb-1">Matheus Amancio</h5>
+              <p class="text-muted mb-1">Estudante de Desenvolvimento de Software</p>
+              <small class="text-muted">
+                <i class="bi bi-envelope me-1"></i>cesarromulo35&#64;gmail.com
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

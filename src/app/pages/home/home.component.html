@@ -1,0 +1,75 @@
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+
+      <!-- Hero -->
+      <div class="text-center mb-5">
+        <i class="bi bi-mortarboard-fill display-3 text-primary"></i>
+        <h1 class="fw-bold mt-2">Angular University</h1>
+        <p class="text-muted lead">Catálogo mundial de universidades</p>
+      </div>
+
+      <!-- Search Card -->
+      <div class="card shadow border-0 mb-4">
+        <div class="card-body p-4">
+          <h5 class="card-title mb-3">
+            <i class="bi bi-search me-2 text-primary"></i>Pesquisar por País
+          </h5>
+
+          <div class="mb-3">
+            <label for="countrySelect" class="form-label fw-semibold">Selecione ou digite um país</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-globe"></i></span>
+              <select id="countrySelect" class="form-select" [(ngModel)]="selectedCountry">
+                <option value="">-- Selecione um país --</option>
+                <option *ngFor="let c of countries" [value]="c">{{ c }}</option>
+              </select>
+            </div>
+          </div>
+
+          <button class="btn btn-primary w-100 py-2" (click)="search()" [disabled]="!selectedCountry">
+            <i class="bi bi-search me-2"></i>Buscar Universidades
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Access -->
+      <div class="card shadow-sm border-0 mb-4">
+        <div class="card-body">
+          <h6 class="card-title mb-3"><i class="bi bi-lightning-fill text-warning me-2"></i>Acesso Rápido</h6>
+          <div class="d-flex flex-wrap gap-2">
+            <button *ngFor="let c of ['Brazil','United States','Canada','Australia','Germany','Japan','United Kingdom','France']"
+              class="btn btn-outline-secondary btn-sm" (click)="searchFromHistory(c)">
+              {{ c }}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Search History -->
+      <div class="card shadow-sm border-0" *ngIf="history.length > 0">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h6 class="card-title mb-0"><i class="bi bi-clock-history me-2 text-info"></i>Histórico de Pesquisas</h6>
+            <button class="btn btn-link btn-sm text-danger p-0" (click)="clearHistory()">
+              <i class="bi bi-trash me-1"></i>Limpar
+            </button>
+          </div>
+          <div class="list-group list-group-flush">
+            <button *ngFor="let h of history"
+              class="list-group-item list-group-item-action d-flex justify-content-between align-items-center border-0 px-0"
+              (click)="searchFromHistory(h.country)">
+              <div>
+                <i class="bi bi-geo-alt me-2 text-muted"></i>
+                <strong>{{ h.country }}</strong>
+                <small class="text-muted ms-2">{{ h.resultCount }} universidades</small>
+              </div>
+              <small class="text-muted">{{ h.date }}</small>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
