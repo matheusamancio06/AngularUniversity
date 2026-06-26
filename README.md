@@ -2,6 +2,15 @@
 
 > Catálogo mundial de Universidades com Angular
 
+## 🚀 Demo ao Vivo
+
+> **O aplicativo está hospedado no Netlify:**
+> ### 👉 [https://angularuniversity.netlify.app](https://angularuniversity.netlify.app)
+>
+> *(O GitHub Pages não suporta a API utilizada neste projeto pois ela opera apenas em HTTP, enquanto o GitHub Pages exige HTTPS. O Netlify resolve isso com um proxy server-side.)*
+
+---
+
 [![Angular](https://img.shields.io/badge/Angular-19-red?logo=angular)](https://angular.io/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?logo=typescript)](https://www.typescriptlang.org/)
 [![Bootstrap](https://img.shields.io/badge/Bootstrap-5.x-purple?logo=bootstrap)](https://getbootstrap.com/)
