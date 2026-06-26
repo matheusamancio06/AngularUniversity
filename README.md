@@ -187,4 +187,4 @@ Este projeto está licenciado sob a [Licença MIT](LICENSE).
 
 **Matheus Amancio**
 Estudante de Desenvolvimento de Software
-📧 cesarromulo35@gmail.com
+📧 matheusamancio006@gmail.com
