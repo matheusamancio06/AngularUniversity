@@ -1,0 +1,14 @@
+[build]
+  command = "ng build"
+  publish = "dist/AngularUniversity/browser"
+
+[[redirects]]
+  from = "/api/*"
+  to = "http://universities.hipolabs.com/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

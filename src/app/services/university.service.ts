@@ -5,7 +5,13 @@ import { University } from '../interfaces/university.interface';
 
 @Injectable({ providedIn: 'root' })
 export class UniversityService {
-  private readonly apiUrl = 'http://universities.hipolabs.com/search';
+  // On HTTPS (Netlify) use the server-side proxy to avoid mixed content.
+  // On HTTP (localhost dev) call the API directly.
+  private get apiUrl(): string {
+    return window.location.protocol === 'https:'
+      ? '/api/search'
+      : 'http://universities.hipolabs.com/search';
+  }
 
   constructor(private http: HttpClient) {}
 
