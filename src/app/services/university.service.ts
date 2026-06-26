@@ -5,7 +5,7 @@ import { University } from '../interfaces/university.interface';
 
 @Injectable({ providedIn: 'root' })
 export class UniversityService {
-  private readonly apiUrl = 'https://universities.hipolabs.com/search';
+  private readonly apiUrl = 'http://universities.hipolabs.com/search';
 
   constructor(private http: HttpClient) {}
 
